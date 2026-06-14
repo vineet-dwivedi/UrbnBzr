@@ -1,13 +1,21 @@
-import { useState } from 'react';
-import { getStoredLocation, saveLocation } from '../lib/location.js';
+import { useLocationContext } from '../context/LocationContext.jsx';
+import { getStoredLocation, saveLocation, searchIndianPlaces } from '../lib/location.js';
 
 export const useUserLocation = () => {
-  const [location, setLocationState] = useState(() => getStoredLocation());
+  const context = useLocationContext();
 
-  const setLocation = (nextLocation) => {
-    setLocationState(nextLocation);
-    saveLocation(nextLocation);
+  if (context) {
+    return context;
+  }
+
+  const location = getStoredLocation();
+
+  return {
+    location,
+    setLocation: saveLocation,
+    searchPlaces: searchIndianPlaces,
+    detectLocation: async () => null,
+    detecting: false,
+    error: '',
   };
-
-  return { location, setLocation };
 };

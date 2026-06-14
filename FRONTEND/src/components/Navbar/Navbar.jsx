@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, MapPin, Sun, Moon, Bell, User, X, TrendingUp, Clock } from 'lucide-react';
+import { Search, Sun, Moon, Bell, User, X, TrendingUp, Clock } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
 import { getHomePath, getProfilePath, getSearchPath, getSettingsPath } from '../../lib/routes.js';
-import { getStoredLocation } from '../../lib/location.js';
+import LocationSelector from '../LocationSelector/LocationSelector.jsx';
 import styles from './Navbar.module.scss';
 
 const TRENDING = ['wireless earbuds', 'phone stand', 'notebook', 'USB hub', 'hoodie'];
@@ -15,7 +15,6 @@ export default function Navbar() {
   const { theme, toggle } = useTheme();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const location = getStoredLocation();
 
   const [query, setQuery] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
@@ -50,10 +49,7 @@ export default function Navbar() {
             onFocus={() => setSearchOpen(true)}
             className={styles.searchInput}
           />
-          <span className={styles.locationChip}>
-            <MapPin size={12} />
-            {location.label}
-          </span>
+          <LocationSelector />
           {query && (
             <button type="button" className={styles.clearBtn} onClick={() => setQuery('')}>
               <X size={14} />

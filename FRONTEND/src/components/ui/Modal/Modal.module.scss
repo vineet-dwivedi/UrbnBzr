@@ -4,18 +4,23 @@
 .backdrop {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.45);
-  z-index: 200;
+  z-index: 900;
 }
 .modal {
   position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  z-index: 201;
+  top: clamp(14px, 6vh, 48px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 901;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   width: 90%;
+  max-height: calc(100dvh - clamp(28px, 12vh, 96px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   &--sm { max-width: 400px; }
   &--md { max-width: 560px; }
@@ -36,4 +41,20 @@
   cursor: pointer;
   &:hover { background: var(--border); color: var(--text); }
 }
-.body { padding: $space-6; }
+.body {
+  padding: $space-6;
+  overflow-y: auto; // Keeps long forms reachable on small screens.
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 640px) {
+  .modal {
+    top: 10px;
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  .header { padding: $space-4; }
+  .body { padding: $space-4; }
+}
