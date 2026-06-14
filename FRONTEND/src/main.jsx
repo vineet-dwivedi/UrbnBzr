@@ -6,6 +6,7 @@ import { ReactLenis } from 'lenis/react';
 // Contexts
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
+import { LocationProvider } from './context/LocationContext.jsx';
 
 // Styles
 import './styles/global.scss';
@@ -133,9 +134,11 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <ThemeProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <LocationProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </LocationProvider>
       </ThemeProvider>
     </AuthProvider>
   </StrictMode>

@@ -1,16 +1,43 @@
-# React + Vite
+# URBNBZR Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite frontend for URBNBZR, a pickup-first local commerce app.
 
-Currently, two official plugins are available:
+## What This Includes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Buyer search, shop detail, pickup request, profile, and request history
+- Seller dashboard, shop setup, image upload, AI review, inventory, analytics, and pickup requests
+- Auth, protected routes, app-wide India location selector, light/dark theme, route-level code splitting, and frontend tests
 
-## React Compiler
+## Run Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Create `.env` from `.env.example` and point it at the backend:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```env
+VITE_API_BASE_URL=http://localhost:4000/api
+VITE_ENABLE_DEV_BYPASS=true
+```
+
+## Scripts
+
+```bash
+npm run lint
+npm test
+npm run build
+npm run preview
+```
+
+## Backend Pairing
+
+Start the backend first, then run this app. The main live flows are:
+
+- Buyer: search -> shop detail -> pickup request
+- Seller: login -> shop setup -> add product -> AI review -> inventory
+
+## Location
+
+The navbar location selector is shared across buyer pages. It supports browser GPS, Indian locality search, popular area fallbacks, search radius changes, and custom coordinates.
