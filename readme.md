@@ -2,11 +2,7 @@
 
 > **Helping people find products in nearby local shops. Helping shop owners digitize inventory with AI.**
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.2+-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-7.2+-13AA52?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+<img src="https://skillicons.dev/icons?i=ts,react,nodejs,mongodb" alt="Tech Stack" />
 
 ---
 
